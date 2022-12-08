@@ -152,4 +152,38 @@ Returns an object with the following property:
 
 **Important:** if you want to use this method then please also check the documentation about [@connect](https://www.tampermonkey.net/documentation.php#_connect).
 
-国际化翻译：https://github.com/Tampermonkey/tampermonkey-i18n
+### GM_getResourceText(name)
+
+获取在 the script header 中预定义的 @resource 标签的内容.
+
+## @resource
+
+Preloads resources that can by accessed via GM_getResourceURL and GM_getResourceText by the script.
+
+```javascript
+// @resource icon1 http://www.tampermonkey.net/favicon.ico
+// @resource icon2 /images/icon.png
+// @resource html http://www.tampermonkey.net/index.html
+// @resource xml http://www.tampermonkey.net/crx/tampermonkey.xml
+// @resource SRIsecured1 http://www.tampermonkey.net/favicon.ico#md5=123434...
+// @resource SRIsecured2 http://www.tampermonkey.net/favicon.ico#md5=123434...;sha256=234234...
+```
+
+Please check the [sub-resource integrity](https://www.tampermonkey.net/documentation.php#Subresource_Integrity) section for more information how to ensure integrity. Multiple tag instances are allowed.
+
+## @require
+
+指定在脚本本身开始运行之前加载和执行的 JavaScript 文件。
+注意: 通过 **@require** 及其 "use strict" 声明加载的脚本可能会影响 the userscript's strict mode!
+
+```javascript
+// @require             https://cdn.staticfile.org/timeago.js/4.0.2/timeago.min.js		// 显示 "***" 时间之前
+// @require             https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js
+```
+
+Please check the [sub-resource integrity](https://www.tampermonkey.net/documentation.php#Subresource_Integrity) section for more information how to ensure integrity. Multiple tag instances are allowed.
+
+# 国际化翻译
+
+https://github.com/Tampermonkey/tampermonkey-i18n
+
